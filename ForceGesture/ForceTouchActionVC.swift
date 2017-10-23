@@ -19,32 +19,32 @@ final class ForceTouchActionVC: UIViewController {
 
     var recognizer: ForceTouchGestureRecognizer?
 
-    private lazy var shareButton: UIButton = {
+    private lazy var firstButton: UIButton = {
 
         var frame = CGRect.zero
         frame.size = self.buttonSize
 
-        let shareButton = UIButton(type: .custom)
-        shareButton.frame = frame
-        shareButton.backgroundColor = .blue
-        shareButton.alpha = 0
+        let firstButton = UIButton(type: .custom)
+        firstButton.frame = frame
+        firstButton.backgroundColor = .blue
+        firstButton.alpha = 0
 
-        self.view.addSubview(shareButton)
-        return shareButton
+        self.view.addSubview(firstButton)
+        return firstButton
     }()
 
-    private lazy var favoriteButton: UIButton = {
+    private lazy var secondButton: UIButton = {
         var frame = CGRect.zero
         frame.size = self.buttonSize
 
-        let favoriteButton = UIButton(type: .custom)
-        favoriteButton.frame = frame
-        favoriteButton.backgroundColor = .blue
+        let secondButton = UIButton(type: .custom)
+        secondButton.frame = frame
+        secondButton.backgroundColor = .blue
 
-        favoriteButton.alpha = 0
+        secondButton.alpha = 0
 
-        self.view.addSubview(favoriteButton)
-        return favoriteButton
+        self.view.addSubview(secondButton)
+        return secondButton
     }()
 
     init(snapshot: UIView?, initialTouch: UITouch, forceRecognizer: ForceTouchGestureRecognizer) {
@@ -103,11 +103,11 @@ final class ForceTouchActionVC: UIViewController {
         favFrame.center.y += distance * force * sin(.pi / 4) * vMult
         favFrame.center.x += distance * force * cos(.pi / 4) * hMult
 
-        self.shareButton.frame = shareFrame
-        self.favoriteButton.frame = favFrame
+        self.firstButton.frame = shareFrame
+        self.secondButton.frame = favFrame
 
-        self.shareButton.alpha = force
-        self.favoriteButton.alpha = force
+        self.firstButton.alpha = force
+        self.secondButton.alpha = force
 
         self.view.backgroundColor = UIColor(white: 1, alpha: force * 0.8)
     }
